@@ -1,15 +1,15 @@
-# GitHub Actions for Okteto Cloud
+# Unofficial GitHub Actions for Okteto Cloud
 
 ## Automate your development workflows using Github Actions and Okteto Cloud
 GitHub Actions gives you the flexibility to build an automated software development workflows. With GitHub Actions for Okteto Cloud you can create workflows to build, deploy and update your applications in [Okteto Cloud](https://cloud.okteto.com).
 
 Get started today with a [free Okteto Cloud account](https://cloud.okteto.com)!
 
-# Github Action for Pushing your Changes to Okteto Cloud
+# Github Action for Deploying your Changes to Okteto Cloud
 
-You can use this action to automatically build your container, push it to the Okteto Registry and deploy it into Okteto Cloud. This is a great way to create preview environments for your pull requests.
+You can use this action to automatically build your container, push it to the Okteto Registry and deploy it into Okteto Cloud. 
 
-[This document](https://okteto.com/docs/reference/cli/index.html#push) has more information on this workflow.
+[This document](https://okteto.com/docs/reference/cli/index.html#deploy) has more information on this workflow.
 
 ## Inputs
 
@@ -21,9 +21,9 @@ The Okteto namespace to use. If not specified it will use the namespace specifie
 
 The name of the deployment. If not specified it will use the one in your `okteto.yml` file.
 
-### `deploy` 
+### `build` 
 
-Create the deployment if it doesn't exist. If not specified the action will fail if the deployment doesn't exist.
+Force build of images in the build section (defaults to false)
 
 ### `working-directory`
 
@@ -52,18 +52,18 @@ jobs:
     - name: "Activate Namespace"
       uses: okteto/namespace@latest
       with:
-        name: cindylopez
+        name: resinas
     
     - name: "Deploy application"
       uses: okteto/apply@latest
       with:
-        namespace: cindylopez
+        namespace: resinas
         manifest: k8s.yaml
 
     - name: "Push changes"
-      uses: okteto/push@latest
+      uses: resinas/okteto-push@latest
       with:
-        namespace: cindylopez
+        namespace: resinas
         name: hello-world
 ```
 
@@ -96,17 +96,17 @@ jobs:
    - name: "Activate Namespace"
       uses: okteto/namespace@latest
       with:
-        name: cindylopez
+        name: resinas
     
     - name: "Deploy application"
       uses: okteto/apply@latest
       with:
-        namespace: cindylopez
+        namespace: resinas
         manifest: k8s.yaml
 
     - name: "Push changes"
-      uses: okteto/push@latest
+      uses: resinas/okteto-push@latest
       with:
-        namespace: cindylopez
+        namespace: resinas
         name: hello-world
  ```
