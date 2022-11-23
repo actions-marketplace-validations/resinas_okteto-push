@@ -7,8 +7,8 @@ inputs:
   name: 
     description: "The name of the deployment. If missing it will use the one in your okteto.yml file"
     required: false
-  deploy: 
-    description: "Create the deployment if it doesn't exist in the namespace. If not specified, the action will fail if the deployment doesn't exist"
+  build: 
+    description: "Force build of images in the build section (defaults to false)"
     required: false
     default: 'false'
   working-directory:
@@ -21,7 +21,7 @@ runs:
   args:
     - ${{ inputs.namespace }}
     - ${{ inputs.name }}
-    - ${{ inputs.deploy }}
+    - ${{ inputs.build }}
     - ${{ inputs.working-directory }}
 branding:
   color: 'green'
