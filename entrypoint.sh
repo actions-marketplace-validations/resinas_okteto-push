@@ -31,4 +31,4 @@ cd $wd
 fi
 
 echo running: okteto deploy $params on $(pwd)
-okteto deplow $params
+okteto deploy $params
